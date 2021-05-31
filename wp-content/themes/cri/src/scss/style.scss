@@ -1,0 +1,265 @@
+/*!
+Theme Name: CRI
+Author: Kurtis Justin
+Description: A theme build for CRI
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: cri
+*/
+
+$color-blue: #203377;
+$color-light-blue: #b7dfe3;
+$color-light-purple: #9093BE;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+// .container {
+//   max-width: 1920px;
+//   margin: 0 auto;
+//   padding: 10px 10px;
+// }
+.container__full {
+  max-width: 100%;
+}
+
+.temp-spacer {
+  padding-top: 110px;
+}
+
+
+/**
+* Params $size options = sm, md, lg, xl
+*/
+@mixin padding-top($size) {
+
+}
+
+
+.navigation {
+  width: 100%;
+  max-width: 1920px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: $color-blue;
+    z-index: -1;
+  }
+
+  &__container {
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 70px;
+
+    img {
+      height: 100%;
+      max-width: 100%;
+      display: inline-block;
+    }
+  }
+  
+  .menu-item {
+    display: inline-block;
+  }
+  
+  .menu-item a {
+    padding: 13px 45px;
+    text-align: center;
+    display: inline-block;
+    color: #fff ; 
+    text-decoration: none;
+  }
+  
+  .menu-item-24 {
+    border: 1px solid white;
+  }
+}
+
+
+.pinned-header {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-size: 110px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: white;
+  }
+}
+
+.white-angled-divider {
+  width: calc(100% + 2px);
+  max-width: 1920px;
+  height: auto;
+  margin-bottom: -1px;
+  margin-left: -2px;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.homepage-intro {
+  background-color: white;
+  width: 100vw;
+  // height: 80vh;
+  max-width: 1920px;
+  padding: 50px 0;
+
+  h2 {
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    font-size: 70px;
+    color: $color-blue;
+  }
+
+  p {
+    font-family: "montserrat", sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+}
+
+.testimonial {
+  background-color: #272932;
+  color: white;
+  padding: 70px 50px 30px;
+
+  img {
+    width: 90px;
+  }
+
+
+
+  blockquote {
+    // margin-top: 0;
+    margin-top: -5px;
+  }
+
+  q {
+    font-family: "montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.4;
+    &:before, &:after {
+      content: ""
+    }
+  }
+
+  cite {
+    display: block;
+    text-align: right;
+    font-size: 20px;
+    padding-top: 20px;
+    color: $color-light-blue;
+    font-style: normal;
+  }
+}
+
+.homepage-tags {
+
+  .homepage-tag {
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+
+    &:first-child {
+      padding-left: 12px;
+    
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .homepage-tag:before {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background-color: $color-light-purple;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  h3 {
+    color: $color-blue;
+    font-size: 33px;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  a {
+    align-self: flex-end;
+    justify-self: flex-end;
+    text-transform: uppercase;
+    color: $color-blue;
+    font-size: 22px;
+    font-weight: 300;
+    
+  }
+}
