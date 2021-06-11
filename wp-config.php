@@ -65,6 +65,8 @@ define( 'NONCE_SALT',       'DR=+H.`lO^KYnTx CWU2sKqmHqNB*qLn4v#v]uYm;Nw!9g}=N`~
  */
 $table_prefix = 'cri_';
 
+define("ALLOW_UNFILTERED_UPLOADS", true);
+
 /**
  * For developers: WordPress debugging mode.
  *

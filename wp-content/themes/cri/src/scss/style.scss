@@ -528,8 +528,58 @@ h1, h2, h3 {
   }
 }
 
-.footer {
+.services {
+  &__title {
+    text-transform: uppercase;
+    font-size: 22px;
+    color: $color-light-purple;
+    letter-spacing: 3px;
+  }
 
+  &__heading {
+    color: $color-blue;
+    font-size: 30px;
+    font-weight: 400;
+    padding-right: 20px;
+  }
+
+  &__spacer {
+    margin: 40px 0;
+  }
+
+  &__content {
+
+    p, li {
+      font-size: 21px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    ul {
+      padding-left: 0;
+      margin-left: 0;
+      list-style-type: none;
+    }
+
+    li {
+      padding-left: 10px;
+    }
+
+    li:before {
+      content: " ";
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 3px;
+      height: 3px;
+      background-color: $color-black;
+      border-radius: 50%;
+    }
+  }
+}
+
+.footer {
   background-color: $color-blue;
 
   &__heading {

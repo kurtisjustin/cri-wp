@@ -1,244 +1,57 @@
-<?php get_header(); ?>
+<?php get_header(); ?><?php
+    while ( have_posts() ) : the_post(); ?>
 
-    <div class="header header--covered"><?php
-        while ( have_posts() ) : the_post(); ?>
-            <div class="header__background" style="background-image: url('<?php the_field('background_image'); ?>');"></div>
-            
-            
-            <div class="blue-angled-divider" style="z-index: 1;">
-                <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
-            </div>
-            <div class="header__content-background">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-11">
-                            <h1 class="header__heading">Overview</h1>
-                            <div class="header__content"><?php echo $post->post_content ?></div>
+        <div class="header header--covered">
+                <div class="header__background" style="background-image: url('<?php the_field('header_background_image'); ?>');"></div>
+                
+                
+                <div class="blue-angled-divider" style="z-index: 1;">
+                    <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
+                </div>
+                <div class="header__content-background">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-11">
+                                <h1 class="header__heading">Overview</h1>
+                                <div class="header__content"><?php echo $post->post_content ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div><?php
-        endwhile; ?>
-    </div><!-- End .header -->
+        </div><!-- End .header -->
 
-    <div class="intro">
-        <div class="intro__angled-image">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 465">
-                <path d="M-.002 0l1133.227 435.953 147.729-56.052v86.052H0"/>
-            </svg>
-        </div><!-- END .intro__angled-image -->
+        <div class="intro">
+            <div class="intro__angled-image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 465">
+                    <path d="M-.002 0l1133.227 435.953 147.729-56.052v86.052H0"/>
+                </svg>
+            </div><!-- END .intro__angled-image -->
 
 
-        <div class="intro__content">
+            <div class="intro__content">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h3 class="sub-heading">Our Team</h3>
-                    </div>
-                </div>
-            </div>
-        
-
-            <div class="container">
-
-            
-
-                <!-- Directors --> <?php
-                if( $directors ): ?>
-                    <div class="team-member">
+                <div class="container services"><?php
+                    while( have_rows('page_sections') ) : the_row(); ?>
                         <div class="row">
-                            <div class="col-3">
-                                <h3 class="team-member__role-heading">Directors</h3>
+                            <div class="col-6">
+                                <h3 class="services__title"><?php echo get_sub_field("title"); ?></h3>
+                                <h3 class="services__heading"><?php echo get_sub_field("heading"); ?></h3>
                             </div>
-                            <div class="col-9">
-                                <div class="row"><?php
-                                    foreach($directors as $post):  ?>
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <div class="team-member__container">
-                                                        <h4 class="team-member__name"><?php echo get_the_title($post->ID); ?></h4>
-                                                        <p class="team-member__position"><?php the_field("position", $post->ID); ?></p>
-                                                        <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
-                                                        <div class="team-member__links">
-                                                            <div class="team-member__link">
-                                                                <button>Bio</button>
-                                                            </div>
-                                                            <div class="team-member__link">
-                                                                <a href="#">e-card</a>
-                                                            </div>
-                                                            <div class="team-member__link team-member__link--icon">
-                                                                <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div><?php 
-                                    endforeach;
-                                    wp_reset_postdata();  ?>
+                            <div class="col-6">
+                                <div class="services__content">
+                                    <?php echo get_sub_field("content"); ?>
                                 </div>
                             </div>
+                        </div><!-- END .row -->
+                        <hr class="services__spacer"><?php
+                    endwhile; ?>
 
-                        </div>
-                    </div><!-- end .team-member --> <?php
-                endif; ?>
-            
-                <!-- Consultants --> <?php
-                if( $consultants ): ?>
-                    <div class="team-member">
-                        <div class="row">
-                            <div class="col-3">
-                                <h3 class="team-member__role-heading">Consultants</h3>
-                            </div>
-                            <div class="col-9">
-                                <div class="row"><?php
-                                    foreach($consultants as $post):  ?>
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <div class="team-member__container">
-                                                        <h4 class="team-member__name"><?php echo get_the_title($post->ID); ?></h4>
-                                                        <p class="team-member__position"><?php the_field("position", $post->ID); ?></p>
-                                                        <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
-                                                        <div class="team-member__links">
-                                                            <div class="team-member__link">
-                                                                <button>Bio</button>
-                                                            </div>
-                                                            <div class="team-member__link">
-                                                                <a href="#">e-card</a>
-                                                            </div>
-                                                            <div class="team-member__link team-member__link--icon">
-                                                                <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div><?php 
-                                    endforeach;
-                                    wp_reset_postdata();  ?>
-                                </div>
-                            </div>
+                </div> <!-- End .container -->
 
-                        </div>
-                    </div><!-- end .team-member --> <?php
-                endif; ?>
+            </div><!-- End .intro__content -->
 
-                <hr>
-
-                <!-- Associates --> <?php
-                if( $associates ): ?>
-                    <div class="team-member">
-                        <div class="row">
-                            <div class="col-3">
-                                <h3 class="team-member__role-heading">Associates</h3>
-                            </div>
-                            <div class="col-9">
-                                <div class="row"><?php
-                                    foreach($associates as $post):  ?>
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <div class="team-member__container">
-                                                        <h4 class="team-member__name"><?php echo get_the_title($post->ID); ?></h4>
-                                                        <p class="team-member__position"><?php the_field("position", $post->ID); ?></p>
-                                                        <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
-                                                        <div class="team-member__links">
-                                                            <div class="team-member__link">
-                                                                <button>Bio</button>
-                                                            </div>
-                                                            <div class="team-member__link">
-                                                                <a href="#">e-card</a>
-                                                            </div>
-                                                            <div class="team-member__link team-member__link--icon">
-                                                                <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div><?php 
-                                    endforeach;
-                                    wp_reset_postdata();  ?>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><!-- end .team-member --> <?php
-                endif; ?>
-                
-                <hr>
-                
-                <!-- Analysts --> <?php
-                if( $analysts ): ?>
-                    <div class="team-member">
-                        <div class="row">
-                            <div class="col-3">
-                                <h3 class="team-member__role-heading">Analysts</h3>
-                            </div>
-                            <div class="col-9">
-                                <div class="row"><?php
-                                    foreach($analysts as $post):  ?>
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-5">
-                                                    <div class="team-member__container">
-                                                        <h4 class="team-member__name"><?php echo get_the_title($post->ID); ?></h4>
-                                                        <p class="team-member__position"><?php the_field("position", $post->ID); ?></p>
-                                                        <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
-                                                        <div class="team-member__links">
-                                                            <div class="team-member__link">
-                                                                <button>Bio</button>
-                                                            </div>
-                                                            <div class="team-member__link">
-                                                                <a href="#">e-card</a>
-                                                            </div>
-                                                            <div class="team-member__link team-member__link--icon">
-                                                                <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                        </div><?php 
-                                    endforeach;
-                                    wp_reset_postdata();  ?>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><!-- end .team-member --> <?php
-                endif; ?>
-
-                <hr>
-
-            </div> <!-- End .container -->
-
-            <div class="container careers">
-                <h2 class="careers__title">Careers</h2><?php
-                while( have_rows('careers') ) : the_row(); ?>
-                <div class="row careers__opportunity">
-                    <div class="col-4">
-                        <h3 class="careers__heading"><?php echo get_sub_field("heading"); ?></h3>
-                    </div>
-                    <div class="col-8">
-                        <div class="careers__content">
-                            <?php echo get_sub_field("content"); ?>
-                        </div>
-                    </div>
-                </div><?php
-                endwhile; ?>
-            </div><!-- END .container -->
-
-        </div><!-- End .intro__content -->
-
-    </div> <!-- END .intro -->
+        </div> <!-- END .intro --><?php
+    endwhile; ?>
 <?php
 
 get_footer();

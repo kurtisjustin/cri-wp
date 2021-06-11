@@ -18,7 +18,7 @@
         <div class="navigation__container">
             <div class="navigation__logo">
                 <a href="<?php echo get_home_url(); ?>">
-                    <img src="<?php site_icon_url() ?>" alt="">
+                    <img src="<?php bloginfo('template_url'); ?>/images/cri-logo-white.svg" alt="">
                 </a>
             </div>
             <nav class="navigation__menu"> <?php 
