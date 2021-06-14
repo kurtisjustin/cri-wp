@@ -20,6 +20,7 @@ $color-black: #272932;
 html, body {
   margin: 0;
   padding: 0;
+  color: $color-black;
 }
 
 body {
@@ -111,7 +112,7 @@ h1, h2, h3 {
     text-decoration: none;
   }
   
-  .menu-item-24 {
+  .menu-item-23 {
     border: 1px solid white;
   }
 }
@@ -219,6 +220,7 @@ h1, h2, h3 {
   &__angled-image {
     padding-top: 36.49%;
     position: relative;
+    margin-bottom: -1px;
   }
   
   &__angled-image svg {
@@ -361,14 +363,14 @@ h1, h2, h3 {
 
 .homepage__testimonials {
   width: 100vw;
-  height: calc(100vh - 80px);
+  height: 200vh;
   position: relative;
 }
 
 .testimonials {
   &__background {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
     background-position: center;
     background-repeat: no-repeat;
@@ -383,10 +385,13 @@ h1, h2, h3 {
 
   &__container {
     position: absolute;
-    height: 100%;
+    height: 50%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+  }
+
+  &__testimonial {
+    margin: 0 20px;
   }
 
 }
@@ -667,6 +672,26 @@ h1, h2, h3 {
     color: white;
     font-size: 18px;
     font-weight: 300;
+  }
+
+  &__top--white-bg {
+    background-color: white;
+    color: $color-black;
+
+    .email-signup {
+      &__heading {
+        color: $color-black;
+      }
+
+      &__input {
+        border: 1px solid $color-blue;
+      }
+
+      &__submit {
+        border: 1px solid $color-blue;
+        color: $color-blue
+      }
+    }
   }
 }
 

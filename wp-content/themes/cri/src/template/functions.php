@@ -6,6 +6,7 @@
 //     mc4wp_show_form();
 // }
 
+show_admin_bar(false);
 
 function add_theme_scripts() {
     wp_enqueue_style("style", get_stylesheet_uri());

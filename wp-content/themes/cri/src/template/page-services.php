@@ -1,5 +1,5 @@
 <?php get_header(); ?><?php
-    while ( have_posts() ) : the_post(); ?>
+    while ( have_posts() ) : the_post();  ?>
 
         <div class="header header--covered">
                 <div class="header__background" style="background-image: url('<?php the_field('header_background_image'); ?>');"></div>
@@ -28,26 +28,32 @@
             </div><!-- END .intro__angled-image -->
 
 
-            <div class="intro__content">
+            <div class="intro__content"><?php
+                if (have_rows("page_sections")) : 
+                    $total_sections_count = count(get_field("page_sections"));
+                    $sections_count = 1;?>
 
-                <div class="container services"><?php
-                    while( have_rows('page_sections') ) : the_row(); ?>
-                        <div class="row">
-                            <div class="col-6">
-                                <h3 class="services__title"><?php echo get_sub_field("title"); ?></h3>
-                                <h3 class="services__heading"><?php echo get_sub_field("heading"); ?></h3>
-                            </div>
-                            <div class="col-6">
-                                <div class="services__content">
-                                    <?php echo get_sub_field("content"); ?>
+                    <div class="container services"><?php
+                        while( have_rows('page_sections') ) : the_row(); ?>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3 class="services__title"><?php echo get_sub_field("title"); ?></h3>
+                                    <h3 class="services__heading"><?php echo get_sub_field("heading"); ?></h3>
                                 </div>
-                            </div>
-                        </div><!-- END .row -->
-                        <hr class="services__spacer"><?php
-                    endwhile; ?>
+                                <div class="col-6">
+                                    <div class="services__content">
+                                        <?php echo get_sub_field("content"); ?>
+                                    </div>
+                                </div>
+                            </div><!-- END .row --><?php
+                            if ($total_sections_count != $sections_count) : ?>
+                                <hr class="services__spacer"> <?php
+                            endif; 
+                            $sections_count ++;
+                        endwhile; ?>
+                    </div> <!-- End .container --><?php
 
-                </div> <!-- End .container -->
-
+                endif; ?>
             </div><!-- End .intro__content -->
 
         </div> <!-- END .intro --><?php

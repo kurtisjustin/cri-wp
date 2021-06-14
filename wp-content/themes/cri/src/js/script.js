@@ -163,15 +163,27 @@ testimonialTl.from(".testimonial cite", {opacity: 0, x: 100});
 const testimonialsTl = gsap.timeline({
   scrollTrigger: {
     trigger: ".testimonials__background",
-    start: "top 80px",
-    pin: true,
-    pinSpacing: false,
-    start: "top 80px",
+    start: "top top",
     endTrigger: ".footer",
-    end: () => outerWidth * 2,
+    end: "bottom bottom",
+    pin: true,
+    pinSpacing: true,
+    scrub: true,
     toggleActions: 'play complete restart reverse',
-    // markers: true,
   }
+});
+
+testimonialsTl.to(".testimonials__container", {
+  scrollTrigger: {
+    trigger: ".testimonials__container",
+    start: "top top",
+    pin: true,
+    pinSpacing: true,
+    scrub: true,
+  },
+  xPercent: -100,
+  x: () => innerWidth,
+  ease: "none",
 })
 
 // ScrollTrigger.create({
@@ -188,15 +200,7 @@ const testimonialsTl = gsap.timeline({
 // // Testimonials horizontal trigger
 // const testimonialsSideTl = gsap.timeline({
 //     scrollTrigger: {
-//         trigger: ".testimonials-container",
-//         start: "top 80px",
-//         end: () => (outerWidth * 2) ,
-//         scrub: true,
-//         pin: true,
-//         pinSpacing: true,
-//         invalidateOnRefresh: true,
-//         // anticipatePin: 1,
-//         markers: true
+      
 //     }
 // })
 // testimonialsSideTl.to('.testimonials-container', {

@@ -8,7 +8,18 @@
 <?php
     endif;
 ?>
-<footer class="footer">
+<footer class="footer"><?php
+    if(is_page("18")) : ?>
+        <div class="footer__top footer__top--white-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8">
+                        <?php echo do_shortcode("[mc4wp_form id='58']") ?>
+                    </div>
+                </div>
+            </div>
+        </div><?php 
+    else: ?>
 
     <div class="footer__top">
         <div class="container">
@@ -26,7 +37,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><?php
+        endif;
+    ?>
 
     <div class="footer__bottom">
         <div class="container">

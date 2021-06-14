@@ -91,7 +91,7 @@ while ( have_posts() ) : the_post(); ?>
 
         <div class="testimonials__container"  style="width: <?php echo $testimonialsCount * 100; ?>vw;"><?php 
             while( have_rows('testimonials') ) : the_row(); ?>
-                <div class="testimonial">
+                <div class="testimonials__testimonial testimonial">
                     <div class="container">
 
                         <div class="row">
