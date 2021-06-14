@@ -10,6 +10,23 @@ if( have_rows('testimonials') ):
 endif; 
 
 while ( have_posts() ) : the_post(); ?>
+
+<?php
+// Get the Video Fields
+$video_mp4 =  get_field('landing_video'); // MP4 Field Name
+// Build the  Shortcode
+$attr =  array(
+'mp4'      => $video_mp4,
+'preload'  => 'auto'
+);
+?>
+
+<!-- <div class="loading-screen">
+    <video id="landing-video" controls>
+        <source src="<?php // the_field("landing_video"); ?>">
+    </video>
+</div> -->
+
 <main class="homepage">
     <div class="header">
         <div class="header__background" style="background-image: url('<?php the_field('background_header_image'); ?>');"></div>
@@ -89,27 +106,38 @@ while ( have_posts() ) : the_post(); ?>
     <div class="homepage__testimonials testimonials">
         <div class="testimonials__background" style="background-image: url('<?php the_field("testimonials_image"); ?>');"></div><!-- End .pinned-testimonials -->
 
-        <div class="testimonials__container"  style="width: <?php echo $testimonialsCount * 100; ?>vw;"><?php 
-            while( have_rows('testimonials') ) : the_row(); ?>
-                <div class="testimonials__testimonial testimonial">
-                    <div class="container">
+        <div class="testimonials__container">
+            <div class="testimonials__container-inner"><?php 
+                while( have_rows('testimonials') ) : the_row(); ?>
+                    <div class="testimonials__item">
+                        <div class="container">
 
-                        <div class="row">
-                            <div class="col-2">
-                                <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
-                            </div>
-                            <div class="col-9">
-                                <blockquote>
-                                    <q><?php echo get_sub_field("testimonial_content");  ?></q>
-                                    <cite><?php echo get_sub_field("testimonial_quotee");  ?></cite>
-                                </blockquote>
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <div class="row">
+                                        <div class="col-xl-8 col-lg-12">
+                                            <p class="testimonials__item-content"><?php echo get_sub_field("testimonial_content"); ?></p>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-12 align-self-end">
+                                        <p class="testimonials__item-cite"><?php echo get_sub_field("testimonial_quotee"); ?></p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End .testimonial --><?php
-            endwhile; ?>
+                    </div><!-- End .testimonial --><?php
+                endwhile; ?>
+            </div>
+            <div class="blue-angled-divider">
+                <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
+            </div>
         </div><!-- End .testimonials__container -->
     </div><!-- End .homepage__testimonials.tstimonials -->
+    
 </main><!-- End main.homepage --><?php 
 endwhile;
 

@@ -32,7 +32,6 @@
             )
         )
     )); ?>
-
     <div class="header header--covered"><?php
         while ( have_posts() ) : the_post(); ?>
             <div class="header__background" style="background-image: url('<?php the_field('background_image'); ?>');"></div>
@@ -96,7 +95,7 @@
                                                         <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
                                                         <div class="team-member__links">
                                                             <div class="team-member__link">
-                                                                <button>Bio</button>
+                                                                <button id="team-modal-button" data-modal="team-id-<?php echo $post->ID; ?>">Bio</button>
                                                             </div>
                                                             <div class="team-member__link">
                                                                 <a href="#">e-card</a>
@@ -108,7 +107,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
+                                            <div class="team-member__bio bio" id="team-id-<?php echo $post->ID; ?>">
+                                                <div class="bio__close"><button>Close</button></div>
+                                                <div class="bio__content">
+                                                    <h4 class="bio__name"><?php echo get_the_title($post->ID); ?></h4>
+                                                    <p class="bio__position"><?php the_field("position", $post->ID); ?></p>
+                                                    <div class="bio__bio">
+                                                        <?php the_field("bio", $post->ID); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div><?php 
                                     endforeach;
                                     wp_reset_postdata();  ?>
@@ -138,7 +147,7 @@
                                                         <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
                                                         <div class="team-member__links">
                                                             <div class="team-member__link">
-                                                                <button>Bio</button>
+                                                                <button id="team-modal-button" data-modal="team-id-<?php echo $post->ID; ?>">Bio</button>
                                                             </div>
                                                             <div class="team-member__link">
                                                                 <a href="#">e-card</a>
@@ -147,6 +156,19 @@
                                                                 <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="team-member__bio bio" id="team-id-<?php echo $post->ID; ?>">
+                                                <div class="bio__close"><button>Close</button></div>
+                                                <div class="bio__content">
+                                                    <h4 class="bio__name"><?php echo get_the_title($post->ID); ?></h4>
+                                                    <p class="bio__position"><?php the_field("position", $post->ID); ?></p>
+                                                    <div class="bio__bio">
+                                                        <?php the_field("bio", $post->ID); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +204,7 @@
                                                         <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
                                                         <div class="team-member__links">
                                                             <div class="team-member__link">
-                                                                <button>Bio</button>
+                                                                <button id="team-modal-button" data-modal="team-id-<?php echo $post->ID; ?>">Bio</button>
                                                             </div>
                                                             <div class="team-member__link">
                                                                 <a href="#">e-card</a>
@@ -191,6 +213,17 @@
                                                                 <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="team-member__bio bio" id="team-id-<?php echo $post->ID; ?>">
+                                                <div class="bio__close"><button>Close</button></div>
+                                                <div class="bio__content">
+                                                    <h4 class="bio__name"><?php echo get_the_title($post->ID); ?></h4>
+                                                    <p class="bio__position"><?php the_field("position", $post->ID); ?></p>
+                                                    <div class="bio__bio">
+                                                        <?php the_field("bio", $post->ID); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,7 +259,7 @@
                                                         <p class="team-member__email"><a href="mailto:<?php the_field("email", $post->ID); ?>"></a><?php the_field("email", $post->ID); ?></p>
                                                         <div class="team-member__links">
                                                             <div class="team-member__link">
-                                                                <button>Bio</button>
+                                                                <button id="team-modal-button" data-modal="team-id-<?php echo $post->ID; ?>">Bio</button>
                                                             </div>
                                                             <div class="team-member__link">
                                                                 <a href="#">e-card</a>
@@ -235,6 +268,19 @@
                                                                 <a href="<?php the_field("linkedin", $post->ID); ?>"><img class="team-member__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon.png"></a>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="team-member__bio bio" id="team-id-<?php echo $post->ID; ?>">
+                                                <div class="bio__close"><button>Close</button></div>
+                                                <div class="bio__content">
+                                                    <h4 class="bio__name"><?php echo get_the_title($post->ID); ?></h4>
+                                                    <p class="bio__position"><?php the_field("position", $post->ID); ?></p>
+                                                    <div class="bio__bio">
+                                                        <?php the_field("bio", $post->ID); ?>
                                                     </div>
                                                 </div>
                                             </div>

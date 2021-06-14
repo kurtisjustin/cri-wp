@@ -13,6 +13,9 @@ $color-light-blue: #b7dfe3;
 $color-light-purple: #9093BE;
 $color-black: #272932;
 
+$font-montserrat: 'Montserrat', sans-serif;
+$font-quat: 'Quattrocento Sans', sans-serif;
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -21,11 +24,12 @@ html, body {
   margin: 0;
   padding: 0;
   color: $color-black;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Quattrocento Sans', sans-serif;
-  overflow-x: hidden;
+  
 }
 
 h1, h2, h3 {
@@ -50,151 +54,16 @@ h1, h2, h3 {
 
 }
 
+@import "./_navigation.scss";
 
-.navigation {
-  width: 100%;
-  max-width: 1920px;
-  height: 80px;
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  font-size: 17px;
+@import "./_header.scss";
 
-  // .active {
+@import "./_testimonial.scss";
 
-  //   .navigation__background {
-  //     height: 100%;
-  //   }
+@import "./_homepage-tags.scss";
 
-  // }
+@import "./_home-testimonials.scss";
 
-  &__background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $color-blue;
-    z-index: -1;
-  }
-
-  &__container {
-    width: 100%;
-    padding: 0 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__logo {
-    height: 70px;
-
-    img {
-      height: 100%;
-      max-width: 100%;
-      display: inline-block;
-    }
-  }
-  
-  .menu-item {
-    display: inline-block;
-  }
-  
-  .menu-item a {
-    padding: 12px 55px;
-    text-align: center;
-    display: inline-block;
-    color: #fff ; 
-    text-decoration: none;
-  }
-  
-  .menu-item-23 {
-    border: 1px solid white;
-  }
-}
-
-/*
-  Styles for the homepage header
-*/
-.header {
-  position: relative;
-    
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  align-items: center;
-  overflow-y: hidden;
-
-  &--covered {
-
-      display: block;
-
-  }
-
-  .blue-angled-divider {
-    position: relative;
-    width: 150vw;
-
-    left: 6vw;
-    margin-top: -20vh;
-    transform: scaleX(-1);
-
-    img {
-      width: 111%;
-    }
-  }
-
-  &__content-background {
-    background-color: $color-blue;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-  }
-
-  &__background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  &__heading {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    font-size: 30px;
-    line-height: 1.3;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: white;
-
-    &--home {
-      font-size: 99px;
-    }
-  }
-
-  &__content {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    font-size: 30px;
-    line-height: 1.4;
-    font-weight: 400;
-    color: white;
-  }
-}
 
 /*
   Introduction section for the homepage
@@ -266,135 +135,17 @@ h1, h2, h3 {
   padding-bottom: 150px;
 }
 
-.testimonial {
-  background-color: #272932;
-  color: white;
-  padding: 70px 50px 30px;
-  margin-bottom: 50px;
-
-  img {
-    width: 90px;
-  }
-
-
-
-  blockquote {
-    // margin-top: 0;
-    margin-top: -5px;
-  }
-
-  q {
-    font-family: "montserrat", sans-serif;
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 1.4;
-    &:before, &:after {
-      content: ""
-    }
-  }
-
-  cite {
-    display: block;
-    text-align: right;
-    font-size: 20px;
-    padding-top: 20px;
-    color: $color-light-blue;
-    font-style: normal;
-  }
+hr {
+  border: 0;
+  width: 100%;
+  height: 2px;
+  background-color: $color-light-purple;
 }
 
-.homepage-tags {
-
-  .homepage-tag {
-    position: relative;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-
-    &:first-child {
-      padding-left: 12px;
-    
-      &:before {
-        display: none;
-      }
-    }
-  }
-
-  .homepage-tag:before {
-    content: "";
-    top: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    width: 3px;
-    background-color: $color-light-purple;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-  }
-
-  h3 {
-    color: $color-blue;
-    font-size: 33px;
-    font-weight: 300;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: 24px;
-    font-weight: 300;
-  }
-
-  a {
-    align-self: flex-end;
-    justify-self: flex-end;
-    text-transform: uppercase;
-    color: $color-blue;
-    font-size: 22px;
-    font-weight: 300;
-  }
+.service-child-page-container {
+  padding-top: 40vh;
 }
 
-.homepage__testimonials {
-  width: 100vw;
-  height: 200vh;
-  position: relative;
-}
-
-.testimonials {
-  &__background {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-  }
-
-  &__container {
-    position: absolute;
-    height: 50%;
-    display: flex;
-    align-items: center;
-  }
-
-  &__testimonial {
-    margin: 0 20px;
-  }
-
-}
 
 
 .blue-angled-divider {
@@ -503,6 +254,80 @@ h1, h2, h3 {
     width: 24px;
     height: auto;
   }
+
+  &__bio {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 90vw;
+    height: 100vh;
+    background-color: $color-blue;
+    transform: translateX(100%);
+    z-index: 1000000;
+    color: white;
+    transition: all 500ms;
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+}
+
+.bio {
+  padding: 20px 100px;
+
+  &__close {
+    display: inline-block;
+
+    button {
+      display: block;
+      color: inherit;
+      background-color: inherit;
+      border: none;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 300;
+      position: relative;
+      letter-spacing: 3px;
+      padding: 6px 0;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 2px;
+        background-color: white;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 33px;
+    font-weight: 400;
+  }
+
+  &__position {
+    font-size: 21px !important;
+  }
+
+  &__bio p {
+    font-size: 21px;
+    font-family: $font-quat;
+    line-height: 1.5;
+  }
+
+  &__bio blockquote {
+    padding: 0;
+    margin: 0;
+
+    p{
+      font-family: $font-montserrat;
+    }
+  }
+
 }
 
 .careers {
@@ -559,6 +384,7 @@ h1, h2, h3 {
       font-weight: 400;
       margin-bottom: 15px;
       position: relative;
+      line-height: 1.5;
     }
 
     ul {
@@ -579,9 +405,15 @@ h1, h2, h3 {
       width: 3px;
       height: 3px;
       background-color: $color-black;
-      border-radius: 50%;
+      border-radius: 100%;
     }
   }
+}
+
+.pre-footer-text {
+  font-size: 30px; 
+  color: $color-blue !important;
+  font-weight: 400 !important;
 }
 
 .footer {

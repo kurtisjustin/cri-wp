@@ -1,0 +1,81 @@
+
+/*
+  Styles for the homepage header
+*/
+.header {
+    position: relative;
+      
+    width: 100vw;
+    height: 100vh;
+  
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  
+    &--covered {
+  
+        display: block;
+  
+    }
+  
+    .blue-angled-divider {
+      position: relative;
+      width: 150vw;
+  
+      left: 6vw;
+      margin-top: -20vh;
+      transform: scaleX(-1);
+  
+      img {
+        width: 111%;
+      }
+    }
+  
+    &__content-background {
+      background-color: $color-blue;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+  
+    &__background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  
+    &__heading {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      font-size: 30px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: white;
+  
+      &--home {
+        font-size: 99px;
+      }
+    }
+  
+    &__content {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      font-size: 30px;
+      line-height: 1.4;
+      font-weight: 400;
+      color: white;
+    }
+  }
+  

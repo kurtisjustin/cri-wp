@@ -43,13 +43,62 @@ const headerTl = gsap.timeline({
       pin: true,
       pinSpacing: false,
       scrub: true,
-      markers: true,
     }
 });
 
 headerTl.to(".navigation__background", {
   y: 0,
 })
+
+
+// Modal open
+const modals = document.querySelectorAll("[data-modal]");
+
+function showModal(e) {
+  target = document.getElementById(e.target.getAttribute("data-modal"));
+
+  target.classList.add("active")
+}
+modals.forEach(modal => {
+  modal.addEventListener("click", showModal);
+})
+
+// Modal Close
+const closeModals = document.querySelectorAll(".bio__close");
+
+function hideModal(e) {
+  target = document.querySelectorAll(".team-member__bio");
+  target.forEach(targ => {
+    targ.classList.remove("active");
+  })
+  
+}
+closeModals.forEach(modal => {
+  modal.addEventListener("click", hideModal);
+})
+
+// Disable click on parent menu item
+
+
+
+
+// function homeTestiTl() {
+//   ScrollTrigger.create({
+//     trigger: ".testimonials__container"
+//   })
+// }
+
+// ScrollTrigger.create({
+//     trigger: ".homepage__testimonials",
+//     start: "top top",
+//     // onEnter: () => homeTestiTl(),
+//     end: "+=500",
+//     pin: true,
+//     pinSpacing: false,
+//     scrub: true,
+//     markers: true,
+// });
+
 // homeTl.from(".pinned-header");
 
 // gsap.timeline({
@@ -160,31 +209,31 @@ testimonialTl.from(".testimonial cite", {opacity: 0, x: 100});
 //     ease: "none",
 // })
 
-const testimonialsTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".testimonials__background",
-    start: "top top",
-    endTrigger: ".footer",
-    end: "bottom bottom",
-    pin: true,
-    pinSpacing: true,
-    scrub: true,
-    toggleActions: 'play complete restart reverse',
-  }
-});
+// const testimonialsTl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".testimonials__background",
+//     start: "top top",
+//     endTrigger: ".testimonials__container-inner",
+//     end:"bottom bottom",
+//     pin: true,
+//     pinSpacing: true,
+//     scrub: true,
+//     toggleActions: 'play complete restart reverse',
+//   }
+// });
 
-testimonialsTl.to(".testimonials__container", {
-  scrollTrigger: {
-    trigger: ".testimonials__container",
-    start: "top top",
-    pin: true,
-    pinSpacing: true,
-    scrub: true,
-  },
-  xPercent: -100,
-  x: () => innerWidth,
-  ease: "none",
-})
+// testimonialsTl.to(".testimonials__container-inner", {
+//   scrollTrigger: {
+//     trigger: ".testimonials__container-inner",
+//     start: "top top",
+//     pin: true,
+//     // pinSpacing: true,
+//     scrub: true,
+//   },
+//   yPercent: -100,
+//   y: () => innerHeight,
+//   ease: "none",
+// })
 
 // ScrollTrigger.create({
 //     pin: true,

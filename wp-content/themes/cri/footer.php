@@ -1,9 +1,9 @@
 <?php 
     if (is_front_page()) :
 ?>
-<div class="blue-angled-divider">
-    <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
-</div>
+<!-- <div class="blue-angled-divider">
+    <img src="<?php // bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
+</div> -->
 
 <?php
     endif;
