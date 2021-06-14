@@ -8,6 +8,9 @@
 
 show_admin_bar(false);
 
+
+
+
 function add_theme_scripts() {
     wp_enqueue_style("style", get_stylesheet_uri());
     wp_enqueue_style( 'bootstrap-grid', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap-grid.min.css', array(), 20141119 );

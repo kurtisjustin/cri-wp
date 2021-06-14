@@ -58,16 +58,52 @@
   }
   
 
-  @media screen and (max-width: 1400px) {
-      .homepage-tag {
-          h3 {
-              font-size: 28px;
-          }
-          p {
-              font-size: 20px;
-          }
-          a {
-              font-size: 19px;
-          }
-      }
-  }
+@media screen and (max-width: 1400px) {
+    .homepage-tags {
+        .homepage-tag {
+            h3 {
+                font-size: 28px;
+            }
+            p {
+                font-size: 20px;
+            }
+            a {
+                font-size: 19px;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .homepage-tags {
+        .homepage-tag {
+            h3 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .homepage-tags {
+        .homepage-tag {
+            h3 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            a {
+                font-size: 14px;
+            }
+
+        }
+    }
+}

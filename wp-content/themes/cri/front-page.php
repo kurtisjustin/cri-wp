@@ -50,12 +50,12 @@ $attr =  array(
         <div class="intro__content">
             <div class="container">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8 col-md-10">
                         <h2 class="slide-in-from-left"><?php the_field('intro_heading'); ?></h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8 offset-lg-3">
+                    <div class="col-8 col-md-10 offset-md-2">
                     <p class="slide-in-from-left"><?php the_field("introduction_excerpt"); ?></p> 
                     </div>
                 </div>

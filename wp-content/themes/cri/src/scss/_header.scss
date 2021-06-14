@@ -79,3 +79,10 @@
     }
   }
   
+  @media screen and (max-width: 1000px) {
+      .header {
+          &__heading--home {
+              font-size: 70px;
+          }
+      }
+  }

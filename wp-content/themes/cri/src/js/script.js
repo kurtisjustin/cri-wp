@@ -78,7 +78,10 @@ closeModals.forEach(modal => {
 })
 
 // Disable click on parent menu item
-
+// const subMenu = document.querySelector(".menu-item-has-children");
+// subMenu.addEventListener("click", (e) => {
+//   e.preventDefault();
+// })
 
 
 
