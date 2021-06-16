@@ -11,25 +11,16 @@ endif;
 
 while ( have_posts() ) : the_post(); ?>
 
-<?php
-// Get the Video Fields
-$video_mp4 =  get_field('landing_video'); // MP4 Field Name
-// Build the  Shortcode
-$attr =  array(
-'mp4'      => $video_mp4,
-'preload'  => 'auto'
-);
-?>
-
-<!-- <div class="loading-screen">
-    <video id="landing-video" controls>
-        <source src="<?php // the_field("landing_video"); ?>">
-    </video>
-</div> -->
+<div class="loading">
+    <div class="loading__container">
+        <img class="loading__image" src="<?php bloginfo('template_url'); ?>/images/landing-sprite-anim-2.0.png" alt="">
+    </div>
+</div>
 
 <main class="homepage">
-    <div class="header">
+    <div class="header"> 
         <div class="header__background" style="background-image: url('<?php the_field('background_header_image'); ?>');"></div>
+        <div class="header__background-color"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -48,15 +39,16 @@ $attr =  array(
         </div><!-- END .intro__angled-image -->
     
         <div class="intro__content">
-            <div class="container">
+            <div class="intro__spacer"></div>
+            <div class="container slide-in-from-left">
                 <div class="row">
                     <div class="col-lg-8 col-md-10">
-                        <h2 class="slide-in-from-left"><?php the_field('intro_heading'); ?></h2>
+                        <h2 class="intro__heading"><?php the_field('intro_heading'); ?></h2>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8 col-md-10 offset-md-2">
-                    <p class="slide-in-from-left"><?php the_field("introduction_excerpt"); ?></p> 
+                    <div class="col-12 col-md-9 offset-sm-3">
+                        <p><?php the_field("introduction_excerpt"); ?></p> 
                     </div>
                 </div>
             </div><!-- END .container -->
@@ -65,12 +57,14 @@ $attr =  array(
 
             <div class="container"><?php
                 while( have_rows('single_testimonial') ) : the_row(); ?>
-                    <div class="testimonial testimonial-single">
+                    <div class="testimonial testimonial-single slide-in-from-right">
                         <div class="row">
-                            <div class="col-2">
-                                <img class="quote-mark" src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                            <div class="col-12 col-md-2">
+                                <div class="quote-mark">
+                                    <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                </div>
                             </div>
-                            <div class="col-9">
+                            <div class="col-12 col-sm-10">
                                 <blockquote>
                                     <q><?php echo get_sub_field("testimonial_content")  ?></q>
                                     <cite><?php echo get_sub_field("testimonial_quotee")  ?></cite>
@@ -87,11 +81,14 @@ $attr =  array(
                 <div class="container">
                     <div class="row"><?php
                         while( have_rows('site_tags') ) : the_row(); ?>
-                            <div class="col-4 homepage-tag">
+                            <div class="col-sm-12 col-md-4 homepage-tag homepage-tag-<?php echo get_row_index(); ?>">
                                 <div class="content">
                                     <h3><?php echo get_sub_field("site_tag"); ?></h3>
                                     <p><?php echo get_sub_field("tag_description"); ?></p>
-                                    <a href="<?php echo get_sub_field("learn_more_link"); ?>">Learn More</a>
+                                    <div class="underlined-link">
+                                        <a class="learn-more-links" href="<?php echo get_sub_field("learn_more_link"); ?>">Learn More</a>
+                                    </div>
+                                    
                                 </div>
                             </div><?php
                         endwhile; ?>
@@ -110,25 +107,26 @@ $attr =  array(
             <div class="testimonials__container-inner"><?php 
                 while( have_rows('testimonials') ) : the_row(); ?>
                     <div class="testimonials__item">
-                        <div class="container">
 
                             <div class="row">
-                                <div class="col-2">
-                                    <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                <div class="col-12 col-md-2">
+                                    <div class="testimonials__quote">
+                                        <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                    </div>
                                 </div>
-                                <div class="col-10">
+                                <div class="col-12 col-md-10">
                                     <div class="row">
-                                        <div class="col-xl-8 col-lg-12">
+                                        <div class="col-xl-8 col-md-12">
                                             <p class="testimonials__item-content"><?php echo get_sub_field("testimonial_content"); ?></p>
                                         </div>
-                                        <div class="col-xl-4 col-lg-12 align-self-end">
-                                        <p class="testimonials__item-cite"><?php echo get_sub_field("testimonial_quotee"); ?></p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-12 offset-xl-8">
+                                            <p class="testimonials__item-cite"><?php echo get_sub_field("testimonial_quotee"); ?></p>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
-                        </div>
                     </div><!-- End .testimonial --><?php
                 endwhile; ?>
             </div>

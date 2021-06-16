@@ -49,6 +49,18 @@
       
       background-size: cover;
       background-repeat: no-repeat;
+      background-position: bottom right;
+      background-color: #2033775D;
+    }
+  
+    &__background-color {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #2033775D;
     }
   
     &__heading {
@@ -82,7 +94,51 @@
   @media screen and (max-width: 1000px) {
       .header {
           &__heading--home {
-              font-size: 70px;
+              font-size: 75px;
+          }
+
+          &__content {
+              font-size: 25px;
+          }
+      }
+  }
+  
+  @media screen and (max-width: 767px) {
+      .header {
+          &__heading--home {
+              font-size: 50px;
+          }
+
+          &__content {
+              font-size: 23px;
+          }
+      }
+  }
+  
+  @media screen and (max-width: 550px) {
+      .header {
+        height: 70vh;
+
+          &__heading--home {
+              font-size: 40px;
+          }
+
+          &__content {
+              font-size: 23px;
+          }
+      }
+  }
+  
+  @media screen and (max-width: 380px) {
+      .header {
+        height: 70vh;
+
+          &__heading--home {
+              font-size: 36px;
+          }
+
+          &__content {
+              font-size: 23px;
           }
       }
   }

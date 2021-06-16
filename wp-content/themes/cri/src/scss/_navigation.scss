@@ -21,23 +21,41 @@
       background-color: $color-blue;
       z-index: -1;
     }
+
+    .active-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-blue;
+        z-index: -1;
+    }
   
     &__container {
       width: 100%;
-      padding: 0 50px;
+      height: 100%;
+      padding: 0 25px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
   
     &__logo {
-      height: 50px;
+      height: 40px;
   
       img {
         height: 100%;
         max-width: 100%;
         display: inline-block;
       }
+    }
+
+    .main_navigation {
+        display: flex;
+        align-items: center;
     }
     
     .menu-item {
@@ -46,12 +64,13 @@
     }
     
     .menu-item a {
-      padding: 12px 55px;
+      padding: 12px 39px;
       text-align: center;
       display: inline-block;
       color: #fff; 
       text-decoration: none;
     }
+
     
     .menu-item-147 {
       border: 1px solid white;
@@ -90,6 +109,29 @@
     }
   }
 
+  .nav-burger, .navigation__mobile {
+      display: none;
+  }
+
+  .nav-burger {
+      width: 25px;
+      height: 20px;
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+
+      span {
+        width: 100%;
+        height: 2px;
+        background-color: white;
+      }
+
+      &__last {
+          width: 80% !important;
+          margin-left: 20%;
+      }
+  }
+
   @media screen and (max-width: 1200px) {
       .navigation {
           font-size: 15px;
@@ -123,3 +165,119 @@
           }
       }
   }
+
+  @media screen and (max-width: 768px) {
+      .navigation {
+
+          .nav-burger {
+            display: flex;
+          }
+          
+          &__menu {
+              position: fixed;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background-color: $color-blue;
+              transform: translateY(-100%);
+              transition: all 500ms;
+              z-index: 10000000;
+          }
+
+          &__menu.active {
+              transform: translateY(0);
+          }
+          
+          .main-navigation {
+              justify-content: center;
+          }
+
+          .sub-menu {
+              height: auto;
+              position: relative;  
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              transform: translateY(0);
+              opacity: 1;
+              left: 0;
+              padding: 0;
+              margin: 0;
+
+              a {
+                  padding-left: 35px;
+              }
+          }
+          .menu-item-has-children > a{
+              color: $color-light-purple;
+              padding-bottom: 5px;
+              border-bottom: 1px solid $color-light-purple
+          }
+
+          .menu {
+              width: 100%;
+              padding: 0;
+              padding-top: 100px;
+              margin: 0;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              list-style-type: none;
+              text-align: center;
+          }
+
+          &__mobile {
+              display: block;
+            .navigation__container {
+                padding-top: 21px;
+            }
+          }
+
+          .menu-close {
+              color: white;
+              font-size: 20px;
+          }
+
+          &__mobile-logo {
+            height: 40px;
+        
+            img {
+              height: 100%;
+              max-width: 100%;
+              display: inline-block;
+            }
+          }
+      }
+  }
+
+//   .navbar {
+//     //   padding-top: 0 !important;
+//     //   padding-bottom: 0 !important;
+
+//       .container {
+//         width: 100%;
+//         padding: 0 50px;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//       }
+
+//       .navbar-brand  {
+//         height: 50px;
+    
+//         img {
+//           height: 100%;
+//           max-width: 100%;
+//           display: inline-block;
+//         }
+//       }
+
+//     //   .navbar-collapse {
+//     //     flex-grow: initial;
+//     //   }
+//   }

@@ -1,7 +1,7 @@
 
 .homepage__testimonials {
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
     padding-top: 80px;
     position: relative;
   }
@@ -20,6 +20,12 @@
       left: 0;
       z-index: -1;
     }
+
+    &__container {
+        overflow-y: hidden;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
   
     .blue-angled-divider {
       position: absolute;
@@ -29,14 +35,21 @@
       z-index: 1;
     }
   
-    &__testimonial {
-      margin: 0 20px;
+    // &__testimonial {
+    //   margin: 0 20px;
+    //   position: relative;
+    //   z-index: 4;
+    // }
+
+    &__container-inner {
+        position: relative;
+        z-index: 1000;
     }
   
     &__item {
       background-color: rgba($color-black, 0.8);
-      margin: 0 100px 100px;
-      padding: 100px 50px;
+      margin: 0 50px 100px;
+      padding: 80px 30px 80px 50px;
       position: relative;
       z-index: 2;
     }
@@ -46,8 +59,8 @@
       color: white;
       padding: 0;
       margin: 0;
-      line-height: 1.6;
-      padding-bottom: 70px;
+      line-height: 1.5;
+      font-family: $font-montserrat;
     }
   
     &__item-cite {
@@ -62,9 +75,54 @@
       .testimonials {
           &__item-content {
               font-size: 22px;
+            //   padding-bottom: 50px;
           }
-          &__item-site {
+          &__item-cite {
               font-size: 19px;
+          }
+          &__quote {
+              max-width: 100%;
+          }
+      }
+  }
+ 
+  @media screen and (max-width: 1000px) {
+      .testimonials {
+          &__item-content {
+              font-size: 20px;
+          }
+
+          &__item-cite {
+              font-size: 17px;
+          }
+
+          &__item {
+              padding: 60px 40px;
+              margin: 0 80px 100px;
+          }
+      }
+  }
+ 
+  @media screen and (max-width: 850px) {
+      .testimonials {
+          p.testimonials__item-content {
+              font-size: 18px;
+          }
+
+          p.testimonials__item-cite {
+              font-size: 16px;
+          }
+
+          .testimonials__item {
+              padding: 60px 20px;
+              margin: 0 20px 100px;
+          }
+          &__quote {
+              margin-bottom: 10px;
+
+              img {
+                width: 60px;
+              }
           }
       }
   }

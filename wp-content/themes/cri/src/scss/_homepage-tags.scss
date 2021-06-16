@@ -3,8 +3,8 @@
 
     .homepage-tag {
       position: relative;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 40px;
+      padding-right: 40px;
       padding-bottom: 10px;
   
       &:first-child {
@@ -37,7 +37,7 @@
     h3 {
       color: $color-blue;
       font-size: 33px;
-      font-weight: 300;
+      font-weight: 400;
       margin-top: 10px;
       margin-bottom: 10px;
     }
@@ -46,14 +46,21 @@
       font-size: 24px;
       font-weight: 300;
     }
+    
+    .underlined-link{
+        align-self: flex-end;
+    }
   
-    a {
+    a.learn-more-links {
       align-self: flex-end;
       justify-self: flex-end;
       text-transform: uppercase;
+      font-family: $font-montserrat;
       color: $color-blue;
       font-size: 22px;
-      font-weight: 300;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-decoration: none;
     }
   }
   
@@ -77,11 +84,12 @@
 
 @media screen and (max-width: 1000px) {
     .homepage-tags {
-        .homepage-tag {
+        .homepage-tag .content {
             h3 {
                 font-size: 24px;
             }
             p {
+                margin-top: 10px;
                 font-size: 16px;
             }
             a {
@@ -92,6 +100,25 @@
 }
 
 @media screen and (max-width: 850px) {
+    .homepage-tags {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        .homepage-tag {
+            h3 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
     .homepage-tags {
         .homepage-tag {
             h3 {
@@ -104,6 +131,28 @@
                 font-size: 14px;
             }
 
+            .underlined-link {
+                &:before {
+                    height: 1px;
+                }
+            }
+
+            padding-left: 0;
+            padding-top: 40px;
+            padding-right: 0;
+            padding-bottom: 40px;
+        }
+
+        .homepage-tag:first-child {
+            padding-left: 0;
+        }
+
+        .homepage-tag:before {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            width: 100%;
         }
     }
 }
