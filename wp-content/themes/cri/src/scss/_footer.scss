@@ -14,6 +14,12 @@
       color: white;
       font-weight: 400;
     }
+
+    // &__reg-info {
+    //     p {
+    //         font-size: 18px;
+    //     }
+    // }
   
     &__list {
       color: white;
@@ -35,6 +41,7 @@
     &__title {
       color: white;
       font-size: 22px;
+      font-weight: 400;
     }
 
     &__icon {
@@ -135,7 +142,7 @@
   
         &__submit {
           border: 1px solid $color-blue;
-          color: $color-blue
+          color: $color-blue;
         }
       }
     }

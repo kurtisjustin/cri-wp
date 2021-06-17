@@ -1,24 +1,7 @@
 <?php get_header(); ?><?php
     while ( have_posts() ) : the_post();  ?>
 
-        <div class="header header--covered">
-                <div class="header__background" style="background-image: url('<?php the_field('header_background_image'); ?>');"></div>
-                
-                
-                <div class="blue-angled-divider" style="z-index: 1;">
-                    <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
-                </div>
-                <div class="header__content-background">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-11">
-                                <h1 class="header__heading">Overview</h1>
-                                <div class="header__content"><?php echo $post->post_content ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div><!-- End .header -->
+        <?php include "header-covered-partial.php"; ?>
 
         <div class="intro">
             <div class="intro__angled-image">

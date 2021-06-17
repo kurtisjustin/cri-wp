@@ -84,16 +84,26 @@ function headerAnimation(media) {
           pin: true,
           pinSpacing: false,
           scrub: true,
+          toggleActions: 'play complete restart reverse',
         }
     });
-    headerTl.to(".intro", {
-      y: -250,
+    headerTl.to(".header__heading--home", {
+      // y: "-=100px",
+      // opacity: 0,
+      // duration: 2
+    })
+    headerTl.fromTo(".intro__container", {
+      y: "-200px",
+      opacity: 0,
+    }, {
+      y: 0,
+      opacity: 1,
     })
   }
 }
 headerAnimation(mediaMd);
 
-gsap.set(".navigation__background", {y: -80})
+gsap.set(".navigation__background", {y: -80});
 const navBgTl = gsap.timeline({
   scrollTrigger: {
     trigger: "body",
@@ -109,7 +119,7 @@ const homeTagsTl = gsap.timeline({
     trigger: ".homepage-tags",
     start: "top 70%",
     end: "bottom 10%",
-    toggleActions: 'play complete restart null',
+    toggleActions: 'play complete null reverse',
   }
 });
 
@@ -136,25 +146,27 @@ let testiContainer = document.querySelector(".homepage__testimonials");
 
 let testiInnerContainer = document.querySelector(".testimonials__container-inner");
 
+let homeTestiContainer =  document.querySelector(".testimonials__container");
+
 if (testiContainer) {
+  gsap.to(homeTestiContainer, {
+    height: testiInnerContainer.clientHeight / 2
+  })
   let homeTestiTl = gsap.timeline({
     scrollTrigger: {
       pin: true,
       scrub: true,
-      markers: true,
-      trigger: testiContainer,
-      end: () => "+=" + (testiInnerContainer.scrollHeight - testiContainer.clientHeight) * 4,
+      trigger: ".testimonials__wrapper",
+      start: "top top",
+      end: () => "+=" + (testiInnerContainer.scrollHeight - testiContainer.clientHeight) * 5,
     },
   });
   homeTestiTl.to(".testimonials__container-inner", {
     y: () => -(testiContainer.clientHeight / 2) - 150,
-    duration: 10
+    duration: 10,
+    ease:Linear.easeNone,
   });
 
-  let homeTestiContainer =  document.querySelector(".testimonials__container");
-  gsap.to(homeTestiContainer, {
-    height: homeTestiContainer.clientHeight / 2
-  })
 }
 
 
@@ -164,12 +176,19 @@ const modals = document.querySelectorAll("[data-modal]");
 
 function showModal(e) {
   target = document.getElementById(e.target.getAttribute("data-modal"));
-  target.classList.add("active");
   // document.querySelector("body").classList.add("body-no-scroll");
   const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
   const body = document.body;
   body.style.position = 'fixed';
   body.style.top = `-${scrollY}`
+  gsap.fromTo(target, {
+    x: "100%", 
+  }, {
+    x: 0,
+    dutation: .5
+  })
+  target.classList.add("active");
+  // target.classList.remove("active");
 }
 modals.forEach(modal => {
   modal.addEventListener("click", showModal);
@@ -184,10 +203,13 @@ function hideModal(e) {
   body.style.position = '';
   body.style.top = '';
   window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  target = document.querySelectorAll(".team-member__bio");
-  target.forEach(targ => {
-    targ.classList.remove("active");
-  })
+  // target = document.querySelectorAll(".team-member__bio");
+  // target.forEach(targ => {
+  //   targ.classList.remove("active");
+  // })
+  target = document.querySelector(".team-member__bio.active");
+  gsap.to(target, {x: "100%", dutation: .5})
+  target.classList.remove("active");
   // document.querySelector("body").classList.add("body-no-scroll");
 }
 closeModals.forEach(modal => {
@@ -204,31 +226,43 @@ const navToggle = document.querySelector(".nav-burger");
 
 
 function showNav(e) {
-  target = document.querySelector(".navigation__menu");
-  target.classList.add("active");
-  const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
-  const body = document.body;
-  // navToggle.classList.remove("active")
-  body.style.position = 'fixed';
-  body.style.top = `-${scrollY}`
+
+  if (navToggle.classList.contains("active")){
+    const body = document.body;
+    const scrollY = body.style.top;
+    body.style.position = '';
+    body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    target = document.querySelector(".navigation__menu");
+    target.classList.remove("active");
+    navToggle.classList.remove("active")
+  } else {
+    target = document.querySelector(".navigation__menu");
+    target.classList.add("active");
+    navToggle.classList.add("active")
+    const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+    const body = document.body;
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}`
+
+  }
 }
   navToggle.addEventListener("click", showNav);
 
 
 // Modal Close
-const closeNav = document.querySelector(".menu-close");
+// const closeNav = document.querySelector(".menu-close");
 
-function hideNav(e) {
-  const body = document.body;
-  const scrollY = body.style.top;
-  body.style.position = '';
-  body.style.top = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  target = document.querySelector(".navigation__menu");
-
-  target.classList.remove("active");
-}
-closeNav.addEventListener("click", hideNav);
+// function hideNav(e) {
+//   const body = document.body;
+//   const scrollY = body.style.top;
+//   body.style.position = '';
+//   body.style.top = '';
+//   window.scrollTo(0, parseInt(scrollY || '0') * -1);
+//   target = document.querySelector(".navigation__menu");
+//   navToggle.classList.remove("menu-close-active")
+// }
+// closeNav.addEventListener("click", hideNav);
 
 
 // Disable click on parent menu item
@@ -239,7 +273,6 @@ subMenu.addEventListener("click", (e) => {
 const subMenuItems = document.querySelectorAll(".menu-item-has-children .sub-menu a");
 subMenuItems.forEach((menuItem => {
   menuItem.addEventListener("click", (e) => {
-    console.log(e.path);
     window.open(e.path[0].href, "_self");
   })
 }))
@@ -248,23 +281,29 @@ subMenuItems.forEach((menuItem => {
 /**
  * loading screen animation
  */
+
+ gsap.set(".header__heading--home", {
+  x: -30,
+  opacity: 0,
+})
 document.addEventListener("DOMContentLoaded", function() {
   const loadingScreen = document.querySelector(".loading");
   const loadingImage = document.querySelector('.loading__the-video')
   let loadingTl = gsap.timeline();
   const windowWidth = window.screen.width;
 
+
   if (windowWidth >= 800) {
     loadingTl.to(".loading__image", 2, {
-      y: -25000,
+      y: -18750,
       ease: SteppedEase.config(50),
     }, "+=1")
     .to(loadingScreen, {
         autoAlpha: 0,
       }, "-=.5")
-      .from(".header__heading--home", {
-        x: -30,
-        opacity: 0,
+      .to(".header__heading--home", {
+        x: 0,
+        opacity: 1,
         duration: .5
       }, "-=.2")
   } else {
@@ -281,5 +320,33 @@ document.addEventListener("DOMContentLoaded", function() {
         duration: .5
       }, "-=.2")
     }
-
 });
+
+
+const buttonsUnderlined = document.querySelectorAll(".underlined-link");
+
+buttonsUnderlined.forEach((button) => {
+
+  let right = button.querySelector(".underlined-link__right");
+  let top = button.querySelector(".underlined-link__top");
+  let left = button.querySelector(".underlined-link__left");
+  let bottom = button.querySelector(".underlined-link__bottom");
+  let text = button.querySelector(".learn-more-links");
+
+
+  let buttonTl = gsap.timeline({paused: true});
+  buttonTl.to(bottom, {width: "99%", duration: .1})
+  .to(right, {height: "100%", duration: .1})
+  .to(top, {width: "100%", duration: .1})
+  .to(left, {height: "100%", duration: .1})
+  .to(left, {width: "100%", duration: .1})
+  .to(text, {color: "#fff"})
+
+  button.addEventListener("mouseenter", () => {
+    buttonTl.play();
+  })
+  button.addEventListener("mouseleave", () => {
+    buttonTl.reverse();
+  })
+})
+

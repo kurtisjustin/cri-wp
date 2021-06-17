@@ -18,7 +18,7 @@ while ( have_posts() ) : the_post(); ?>
 </div>
 
 <main class="homepage">
-    <div class="header"> 
+    <div class="homepage__header header"> 
         <div class="header__background" style="background-image: url('<?php the_field('background_header_image'); ?>');"></div>
         <div class="header__background-color"></div>
         <div class="container">
@@ -39,8 +39,8 @@ while ( have_posts() ) : the_post(); ?>
         </div><!-- END .intro__angled-image -->
     
         <div class="intro__content">
-            <div class="intro__spacer"></div>
-            <div class="container slide-in-from-left">
+            <div class="intro__spacer" style="height: 50px;"></div>
+            <div class="container intro__container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10">
                         <h2 class="intro__heading"><?php the_field('intro_heading'); ?></h2>
@@ -86,9 +86,12 @@ while ( have_posts() ) : the_post(); ?>
                                     <h3><?php echo get_sub_field("site_tag"); ?></h3>
                                     <p><?php echo get_sub_field("tag_description"); ?></p>
                                     <div class="underlined-link">
+                                        <div class="underlined-link__right"></div>
+                                        <div class="underlined-link__top"></div>
+                                        <div class="underlined-link__left"></div>
+                                        <div class="underlined-link__bottom"></div>
                                         <a class="learn-more-links" href="<?php echo get_sub_field("learn_more_link"); ?>">Learn More</a>
                                     </div>
-                                    
                                 </div>
                             </div><?php
                         endwhile; ?>
@@ -100,41 +103,43 @@ while ( have_posts() ) : the_post(); ?>
 
     <div class="spacer-large"></div>
 
-    <div class="homepage__testimonials testimonials">
-        <div class="testimonials__background" style="background-image: url('<?php the_field("testimonials_image"); ?>');"></div><!-- End .pinned-testimonials -->
+    <div class="testimonials__wrapper">
+        <div class="homepage__testimonials testimonials">
+            <div class="testimonials__background" style="background-image: url('<?php the_field("testimonials_image"); ?>');"></div><!-- End .pinned-testimonials -->
 
-        <div class="testimonials__container">
-            <div class="testimonials__container-inner"><?php 
-                while( have_rows('testimonials') ) : the_row(); ?>
-                    <div class="testimonials__item">
+            <div class="testimonials__container">
+                <div class="testimonials__container-inner"><?php 
+                    while( have_rows('testimonials') ) : the_row(); ?>
+                        <div class="testimonials__item">
 
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="testimonials__quote">
-                                        <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-10">
-                                    <div class="row">
-                                        <div class="col-xl-8 col-md-12">
-                                            <p class="testimonials__item-content"><?php echo get_sub_field("testimonial_content"); ?></p>
+                                <div class="row">
+                                    <div class="col-12 col-md-2">
+                                        <div class="testimonials__quote">
+                                            <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xl-4 col-md-12 offset-xl-8">
-                                            <p class="testimonials__item-cite"><?php echo get_sub_field("testimonial_quotee"); ?></p>
+                                    <div class="col-12 col-md-10">
+                                        <div class="row">
+                                            <div class="col-xl-8 col-md-12">
+                                                <p class="testimonials__item-content"><?php echo get_sub_field("testimonial_content"); ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4 col-md-12 offset-xl-8">
+                                                <p class="testimonials__item-cite"><?php echo get_sub_field("testimonial_quotee"); ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                    </div><!-- End .testimonial --><?php
-                endwhile; ?>
-            </div>
-            <div class="blue-angled-divider">
-                <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
-            </div>
-        </div><!-- End .testimonials__container -->
-    </div><!-- End .homepage__testimonials.tstimonials -->
+                        </div><!-- End .testimonial --><?php
+                    endwhile; ?>
+                </div>
+                <div class="blue-angled-divider">
+                    <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
+                </div>
+            </div><!-- End .testimonials__container -->
+        </div><!-- End .homepage__testimonials.tstimonials -->
+    </div><!-- End .testimonials__wrapper -->
     
 </main><!-- End main.homepage --><?php 
 endwhile;

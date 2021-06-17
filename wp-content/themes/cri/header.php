@@ -26,28 +26,33 @@
                 </a>
             </div>
             <nav class="navigation__menu">
+                <div class="navigation__menu-background"></div>
                 <div class="navigation__mobile">
                     <div class="navigation__container">
 
-                        <div class="navigation__mobile-logo">
+                        <!-- <div class="navigation__mobile-logo">
                             <a href="<?php echo get_home_url(); ?>">
                                 <img src="<?php bloginfo('template_url'); ?>/images/cri-logo-white.svg" alt="">
                             </a>
-                        </div>
-                        <div class="menu-close">
-                            <div class="span">Close</div>
-                        </div>
+                        </div> -->
+                        <!-- <div class="menu-close">
+                            <div class="span">x</div>
+                        </div> -->
                     </div>
                 </div>
-                <?php 
-                wp_nav_menu(array(
-                    'theme_location' => 'main-menu',
-                    'container_class' => "main_navigation",
-                )); ?>
+                <div class="navigation__mobile-container">
+                    <?php 
+                    wp_nav_menu(array(
+                        'theme_location' => 'main-menu',
+                        'container_class' => "main_navigation",
+                    )); ?>
+                </div>
             </nav>
 
             <div class="nav-burger">
-                <span></span><span></span><span class="nav-burger__last"></span>
+                <div class="nav-burger__first"></div>
+                <div class="nav-burger__second"></div>
+                <div class="nav-burger__last"></div>
             </div>
         </div>
     </div>

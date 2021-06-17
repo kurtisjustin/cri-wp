@@ -44,12 +44,14 @@ h1, h2, h3, h4, h5 {
 @media screen and (max-width: 1200px) {
   .container {
     padding: 0 40px !important;
+    max-width: 100% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
     padding: 0 20px !important;
+    max-width: 100%;
   }
 }
 
@@ -70,8 +72,8 @@ h1, h2, h3, h4, h5 {
   }
 
   &__container {
-    width: 500px;
-    height: 500px;
+    width: 375px;
+    height: 375px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -79,7 +81,7 @@ h1, h2, h3, h4, h5 {
     overflow-y: hidden;
 
     img {
-      width: 500px;
+      width: 375px;
     }
   }
 }
@@ -107,15 +109,51 @@ h1, h2, h3, h4, h5 {
 .underlined-link {
   position: relative;
   display: inline-block;
+  padding: 6px 10px;
 
-  &:before {
+  .underlined-link:hover {
+    .underlined-link:before {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &__bottom {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -5px;
-    right: 0;
+    bottom: 0;
+    width: 85%;
     height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: $color-blue;
+  }
+  &__right, &__left {
+    position: absolute;
+    width: 2px;
+    height: 0;
+    background-color: $color-blue;
+    z-index: -1;
+  }
+
+  &__top {
+    position: absolute;
+    width: 0;
+    height: 2px;
+    right: 0;
+    top: 0;
+    background-color: $color-blue;
+  }
+
+  &__right {
+    right: 0;
+    bottom: 0;
+  }
+
+
+  &__left {
+    left: 0;
+    top: 0;
   }
 }
 
@@ -147,14 +185,19 @@ h1, h2, h3, h4, h5 {
 */
 .intro {
   position: relative;
-  margin-bottom: -200px;
+  // margin-bottom: 200px;
 
   h2 {
     padding: 0;
     margin: 0;
     font-weight: 300;
-    font-size: 70px;
+    font-size: 57px;
     color: $color-blue;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 300;
   }
 
   p {
@@ -190,7 +233,7 @@ h1, h2, h3, h4, h5 {
   }
 
   &__spacer {
-    padding-bottom: 200px;
+    // padding-bottom: 200px;
   }
 }
 
@@ -213,6 +256,13 @@ h1, h2, h3, h4, h5 {
       h2 {
         font-size: 40px;
       }
+    }
+
+    &__container {
+      position: relative;
+      z-index: 300;
+      transform: none!important;
+      opacity: 1 !important
     }
   }
 }
@@ -311,10 +361,12 @@ hr {
 
 
 .careers {
-  margin-top: 50px;
+  margin-top: 100px;
+  margin-bottom: 120px;
+
 
   &__opportunity {
-    padding-top: 50px;
+    padding-top: 30px;
   }
 
   &__title {
@@ -322,6 +374,7 @@ hr {
     color: $color-light-purple !important;
     text-transform: uppercase;
     font-weight: 600 !important;
+    letter-spacing: 2px;
   }
 
   &__heading {
@@ -329,6 +382,7 @@ hr {
     color: $color-blue !important;
     padding-top: 21px;
     margin-top: 0;
+    font-weight: 400;
   }
 
   &__content {
@@ -340,8 +394,24 @@ hr {
 
 @media screen and (max-width: 850px) {
   .careers {
+    margin-bottom: 50px;
     &__heading {
       font-size: 25px !important;
+    }
+
+    &__content {
+      p {
+        font-size: 19px !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .careers {
+    margin-bottom: 50px;
+    &__heading {
+      font-size: 22px !important;
     }
 
     &__content {
@@ -434,5 +504,14 @@ hr {
     font-size: 20px;
     text-transform: uppercase;
     border: 1px solid white;
+    font-family: $font-montserrat;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 400ms;
+
+    &:hover {
+        background-color: white;
+        color: $color-blue;
+    }
   }
 }
