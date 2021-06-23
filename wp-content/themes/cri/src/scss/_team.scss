@@ -5,11 +5,13 @@
 .team-member {
 
     &__container {
-        margin-bottom: 50px;
+        margin-bottom: 70px;
+        transition: all 200ms;
+        display: inline-block;
     }
 
     &__hr {
-        margin-top: 35px;
+        margin-top: 15px;
         margin-bottom: 70px;
     }
 
@@ -76,6 +78,7 @@
         font-size: 13px;
         padding: 0;
         margin: 0;
+        cursor: pointer;
         text-transform: uppercase;
         font-weight: 400;
         font-family: "montserrat", sans-serif;
@@ -104,6 +107,11 @@
       max-width: 100%;
       width: 24px;
       height: auto;
+      transition: all 200ms;
+
+      &:hover {
+        transform: scale(1.1)
+      }
     }
   
     &__bio {
@@ -131,15 +139,18 @@
     &__close {
       display: inline-block;
       float: right;
+      text-align: center;
   
       button {
         display: block;
         color: inherit;
         background-color: inherit;
         border: none;
+        font-family: $font-montserrat;
+        cursor: pointer;
         text-transform: uppercase;
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         position: relative;
         letter-spacing: 3px;
         padding: 6px 0;
@@ -261,6 +272,7 @@
       .team-member {
           &__role-heading {
               font-size: 25px;
+              padding-bottom: 15px;
           }
       }
 

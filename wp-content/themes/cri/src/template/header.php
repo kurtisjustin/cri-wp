@@ -16,7 +16,7 @@
 
     <div class="navigation" id="navigation">
         <div class="navigation__background"></div><?php
-        if(is_page("18")) : ?>
+        if(is_page("contact") || is_404() || is_page("legal-notice")) : ?>
             <div class="active-background"></div><?php 
         endif; ?>
         <div class="navigation__container">

@@ -43,14 +43,16 @@ h1, h2, h3, h4, h5 {
 
 @media screen and (max-width: 1200px) {
   .container {
-    padding: 0 40px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
     max-width: 100% !important;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
-    padding: 0 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
     max-width: 100%;
   }
 }
@@ -85,6 +87,20 @@ h1, h2, h3, h4, h5 {
     }
   }
 }
+
+.privacy-notice {
+  p {
+    font-size: 21px;
+    font-family: $font-quat;
+    line-height: 1.5;
+  }
+  p.privacy-large-intro {
+    font-size: 33px;
+    color: $color-blue;
+    font-family: $font-montserrat;
+  }
+}
+
 
 @media screen and (max-width: 800px) {
   .loading {
@@ -200,7 +216,7 @@ h1, h2, h3, h4, h5 {
     z-index: 300;
   }
 
-  p {
+  p, li {
     font-family: $font-quat;
     font-size: 28px;
     font-weight: 300;
@@ -243,7 +259,7 @@ h1, h2, h3, h4, h5 {
       h2 {
         font-size: 40px;
       }
-      p {
+      p, li {
         font-size: 24px;
       }
     }
@@ -285,8 +301,8 @@ h1, h2, h3, h4, h5 {
       h2 {
         font-size: 24px;
       }
-      p {
-        font-size: 16px;
+      p, li {
+        font-size: 16px !important;
       }
     }
   }
@@ -338,8 +354,16 @@ hr {
 }
 
 .service-child-page-container {
-  padding-top: 40vh;
+  padding-top: 30vh!important;
 }
+
+
+
+@media screen and (max-width: 768px) {
+  .service-child-page-container {
+    padding-top: 100px !important;
+  }
+} 
 
 
 
@@ -386,9 +410,32 @@ hr {
   }
 
   &__content {
-    p {
-      font-size: 21px !important;
+    p, li {
+      font-size: 20px !important;
     }
+
+    ul {
+      padding-left: 0;
+      margin-left: 0;
+      list-style-type: none;
+    }
+
+    li {
+      padding-left: 10px;
+      position: relative;
+    }
+
+    li:before {
+      content: " ";
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 3px;
+      height: 3px;
+      background-color: $color-black;
+      border-radius: 100%;
+    }
+
   }
 }
 
@@ -422,6 +469,11 @@ hr {
   }
 }
 
+.contact-linkedin-icon img {    
+  width: 54px;
+  margin-left: -6px;
+  margin-top: -12px;
+}
 
 .services {
   &__title {
@@ -429,6 +481,10 @@ hr {
     font-size: 22px;
     color: $color-light-purple;
     letter-spacing: 3px;
+  }
+
+  &__title-serv {
+    padding-top: 30px;
   }
 
   &__heading {
@@ -439,7 +495,11 @@ hr {
   }
 
   &__spacer {
-    margin: 40px 0;
+    margin: 50px 0 30px;
+  }
+
+  .careers__title {
+    padding-top: 30px;
   }
 
   &__content {

@@ -19,11 +19,11 @@
                     <div class="container services"><?php
                         while( have_rows('page_sections') ) : the_row(); ?>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-md-12 col-lg-6">
                                     <h3 class="services__title"><?php echo get_sub_field("title"); ?></h3>
                                     <h3 class="services__heading"><?php echo get_sub_field("heading"); ?></h3>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-md-12 col-lg-6">
                                     <div class="services__content">
                                         <?php echo get_sub_field("content"); ?>
                                     </div>

@@ -9,7 +9,7 @@
     endif;
 ?>
 <footer class="footer"><?php
-    if(is_page("18")) : ?>
+    if(is_page("contact")) : ?>
         <div class="footer__top footer__top--white-bg footer__top--contact">
             <div class="container">
                 <div class="row">
@@ -29,7 +29,7 @@
                     <ul class="footer__list">
                         <li class="footer__list-item">Email: <span>info@cri.ltd</span></li>
                         <li class="footer__list-item">Tel: <span>+4420 7916 9286</span></li>
-                        <li class="footer__list-item"><img class="footer__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon-white.png" /></li>
+                        <li class="footer__list-item"><a href="https://www.linkedin.com/company/3027574/" target="_blank"><img class="footer__icon" src="<?php bloginfo('template_url'); ?>/images/linkedin-icon-white.png" /></a></li>
                     </ul>
                 </div>
 
@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <h5 class="footer__title">Site map</h5>
+                    <h5 class="footer__title">Site map</h5> 
                     <ul class="footer__sitemap">
                         <li><a class="footer__link" href="/about">About</a></li>
                         <li><a class="footer__link" href="/services/overview">Services</a></li>
@@ -55,7 +55,7 @@
                     </ul>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h5 class="footer__title">Office</h5>
+                    <h5 class="footer__title">Registered Office</h5>
                     <ul class="footer__address">
                         <li>167 Turners Hill</li>
                         <li>Cheshunt</li>
@@ -72,7 +72,7 @@
                     CR Investigations Ltd Company Number 08003102</p>
                 </div>
                 <div class="footer__copy">
-                    &copy; 2021 CR Investigations
+                    &copy; 2021 CR Investigations Ltd
                 </div>
             </div>
         </div>

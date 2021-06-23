@@ -2,6 +2,86 @@ gsap.registerPlugin("ScrollTrigger");
 
 
 
+/**
+ * loading screen animation
+ */
+ function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+function eraseCookie(name) {   
+  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+
+ gsap.set(".header__heading--home", {
+  x: -30,
+  opacity: 0,
+})
+
+if(!getCookie("animation")) {
+  document.addEventListener("DOMContentLoaded", function() {
+    const loadingScreen = document.querySelector(".loading");
+    let loadingTl = gsap.timeline();
+    const windowWidth = window.screen.width;
+
+
+    if (windowWidth >= 800) {
+      loadingTl.to(".loading__image", 2, {
+        y: -18750,
+        ease: SteppedEase.config(50),
+      }, "+=1")
+      .to(loadingScreen, {
+          autoAlpha: 0,
+        }, "-=.5")
+        .to(".header__heading--home", {
+          x: 0,
+          opacity: 1,
+          duration: .5
+        }, "-=.2")
+    } else {
+      loadingTl.to(".loading__image", 2, {
+        y: -7000,
+        ease: SteppedEase.config(50),
+      })
+      .to(loadingScreen, {
+          autoAlpha: 0,
+        })
+        .from(".header__heading--home", {
+          x: -30,
+          opacity: 0,
+          duration: .5
+        }, "-=.2")
+      }
+      setCookie("animation", "run", 7)
+      
+  });
+} else {
+  gsap.set(".loading", {autoAlpha: 0})
+  gsap.to(".header__heading--home", {
+    x: 0,
+    opacity: 1,
+    duration: .5
+  });
+}
+
+
+// slide in animation
 function slideIn(target, axis, amount, duration) {
     if (axis === "x") {
         gsap.from(target, {
@@ -59,9 +139,24 @@ ScrollTrigger.batch(".slide-in-from-bottom", {
     onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0}),
     onLeaveBack: batch => gsap.to(batch, {opacity: 0, y: 100}),
 
-    start: animStart,
+    start: "top 100%",
     end: animEnd,
     markers: true,
+});
+
+const slideInFromTop = document.querySelectorAll(".slide-in-from-top");
+
+gsap.set(".slide-in-from-top", {opacity: 0, y: -50})
+
+ScrollTrigger.batch(".slide-in-from-top", {
+    onEnter: batch => gsap.to(batch, {opacity: 1, y: 0}),
+    // onLeave: batch => gsap.to(batch, {opacity: 0, x: 100}),
+    onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0}),
+    onLeaveBack: batch => gsap.to(batch, {opacity: 0, y: -50}),
+
+    start: animStart,
+    end: animEnd,
+    // markers: true,
 });
 
 
@@ -117,7 +212,7 @@ navBgTl.to(".navigation__background", {y: 0, duration: .5})
 const homeTagsTl = gsap.timeline({
   scrollTrigger: {
     trigger: ".homepage-tags",
-    start: "top 70%",
+    start: "top 85%",
     end: "bottom 10%",
     toggleActions: 'play complete null reverse',
   }
@@ -150,7 +245,7 @@ let homeTestiContainer =  document.querySelector(".testimonials__container");
 
 if (testiContainer) {
   gsap.to(homeTestiContainer, {
-    height: testiInnerContainer.clientHeight / 2
+    height: (testiInnerContainer.clientHeight / 2)
   })
   let homeTestiTl = gsap.timeline({
     scrollTrigger: {
@@ -158,7 +253,7 @@ if (testiContainer) {
       scrub: true,
       trigger: ".testimonials__wrapper",
       start: "top top",
-      end: () => "+=" + (testiInnerContainer.scrollHeight - testiContainer.clientHeight) * 5,
+      end: () => "+=" + (testiInnerContainer.scrollHeight - testiContainer.clientHeight) * 1,
     },
   });
   homeTestiTl.to(".testimonials__container-inner", {
@@ -244,7 +339,6 @@ function showNav(e) {
     const body = document.body;
     body.style.position = 'fixed';
     body.style.top = `-${scrollY}`
-
   }
 }
   navToggle.addEventListener("click", showNav);
@@ -265,62 +359,36 @@ function showNav(e) {
 // closeNav.addEventListener("click", hideNav);
 
 
-// Disable click on parent menu item
-const subMenu = document.querySelector(".menu-item-has-children");
-subMenu.addEventListener("click", (e) => {
-  e.preventDefault();
-})
-const subMenuItems = document.querySelectorAll(".menu-item-has-children .sub-menu a");
-subMenuItems.forEach((menuItem => {
-  menuItem.addEventListener("click", (e) => {
-    window.open(e.path[0].href, "_self");
-  })
-}))
+// let mediaLg = window.matchMedia("(max-width: 768px)")
 
+// function menuClick(media) {
+//   if(media.matches) {
+//     const subMenu = document.querySelector(".menu-item-has-children");
+//     subMenu.addEventListener("click", (e) => {
+//       e.preventDefault();
+//     })
+//     const subMenuItems = document.querySelectorAll(".menu-item-has-children .sub-menu a");
+//     subMenuItems.forEach((menuItem => {
+//       menuItem.addEventListener("click", (e) => {
+//         window.open(e.path[0].href, "_self");
+//       })
+//     }))
+//   }
+// }
+// menuClick(mediaLg);
 
-/**
- * loading screen animation
- */
+// // Disable click on parent menu item
+// const subMenu = document.querySelector(".menu-item-has-children");
+// subMenu.addEventListener("click", (e) => {
+//   e.preventDefault();
+// })
+// const subMenuItems = document.querySelectorAll(".menu-item-has-children .sub-menu a");
+// subMenuItems.forEach((menuItem => {
+//   menuItem.addEventListener("click", (e) => {
+//     window.open(e.path[0].href, "_self");
+//   })
+// }))
 
- gsap.set(".header__heading--home", {
-  x: -30,
-  opacity: 0,
-})
-document.addEventListener("DOMContentLoaded", function() {
-  const loadingScreen = document.querySelector(".loading");
-  const loadingImage = document.querySelector('.loading__the-video')
-  let loadingTl = gsap.timeline();
-  const windowWidth = window.screen.width;
-
-
-  if (windowWidth >= 800) {
-    loadingTl.to(".loading__image", 2, {
-      y: -18750,
-      ease: SteppedEase.config(50),
-    }, "+=1")
-    .to(loadingScreen, {
-        autoAlpha: 0,
-      }, "-=.5")
-      .to(".header__heading--home", {
-        x: 0,
-        opacity: 1,
-        duration: .5
-      }, "-=.2")
-  } else {
-    loadingTl.to(".loading__image", 2, {
-      y: -7000,
-      ease: SteppedEase.config(50),
-    })
-    .to(loadingScreen, {
-        autoAlpha: 0,
-      })
-      .from(".header__heading--home", {
-        x: -30,
-        opacity: 0,
-        duration: .5
-      }, "-=.2")
-    }
-});
 
 
 const buttonsUnderlined = document.querySelectorAll(".underlined-link");

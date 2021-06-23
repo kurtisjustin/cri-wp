@@ -6,7 +6,7 @@
                 
                 
                 <div class="blue-angled-divider" style="z-index: 1;">
-                    <img src="<?php bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
+                    <img src="<?php // bloginfo('template_url'); ?>/images/blue-angled-divider.svg" alt="">
                 </div> -->
                 <div class="header__content-background">
                     <div class="container service-child-page-container">
@@ -31,21 +31,26 @@
             <div class="intro__content">
                 <div class="spacer"></div>
                 <div class="container" ><?php
+                if (have_rows("quote")):
                     while( have_rows('quote') ) : the_row(); ?>
-                        <div class="testimonial testimonial-single">
+                        <div class="testimonial testimonial-single testimonial-service">
                             <div class="row">
-                                <div class="col-2">
-                                    <img class="quote-mark" src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                <div class="col-12 col-md-2">
+                                    <div class="quote-mark">
+                                        <img src="<?php bloginfo('template_url'); ?>/images/quote-marks.svg" alt="">
+                                    </div>
                                 </div>
-                                <div class="col-9">
+                                <div class="col-12 col-sm-10">
                                     <blockquote>
                                         <q><?php echo get_sub_field("quote_content")  ?></q>
                                         <cite><?php echo get_sub_field("quote_cite")  ?></cite>
                                     </blockquote>
                                 </div>
                             </div>
-                        </div><!-- End .testimonial --><?php
-                    endwhile; ?>
+                        </div><!-- End .testimonial -->
+                        <hr class="services__spacer"><?php
+                    endwhile; 
+                endif; ?>
                 </div><!-- END .container --><?php
 
                 
@@ -64,12 +69,14 @@
                             endif; ?>
                             <div class="row"><?php 
                                 if (get_sub_field("title")): ?>
-                                    <div class="col-6">
-                                        <h3 class="services__heading"><?php echo get_sub_field("title"); ?></h3>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="services__content">
-                                            <?php echo get_sub_field("content"); ?>
+                                    <div class="row careers__opportunity">
+                                        <div class="col-12 col-md-4">
+                                            <h3 class="careers__heading"><?php echo get_sub_field("title"); ?></h3>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <div class="careers__content">
+                                                <?php echo get_sub_field("content"); ?>
+                                            </div>
                                         </div>
                                     </div><?php
                                 else: ?>
